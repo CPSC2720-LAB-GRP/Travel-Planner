@@ -14,9 +14,6 @@ function App() {
     )
   }, [])
 
-  const options = backendData;
-
-  console.log(options)
   return (
     <div>
           {(typeof backendData.cities === 'undefined') ?(
@@ -26,7 +23,11 @@ function App() {
               <p key={i}>{cities.name}</p>
             ))
           )}
-
+        <select>
+              {
+              backendData.cities.map((cities)=>(<option title={cities.id}>{cities.name}</option>))
+              }
+        </select>
     </div>
   
   )
