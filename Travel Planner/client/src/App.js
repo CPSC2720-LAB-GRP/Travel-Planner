@@ -14,16 +14,21 @@ function App() {
     )
   }, [])
 
+  const options = backendData;
+
+  console.log(options)
   return (
     <div>
-          {(typeof backendData.users === 'undefined') ?(
+          {(typeof backendData.cities === 'undefined') ?(
             <p>Loading...</p>
           ): (
-            backendData.users.map((user, i) => (
-              <p key={i}>{user}</p>
+            backendData.cities.map((cities, i) => (
+              <p key={i}>{cities.name}</p>
             ))
           )}
+
     </div>
+  
   )
 }
 
