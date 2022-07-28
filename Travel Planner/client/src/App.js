@@ -5,7 +5,7 @@ import axios from 'axios'
 function App() {
 
   //weather api
-  const url = 'https://api.openweathermap.org/data/2.5/weather?q=${location}&appid={45567e79f27c046f256a6abdc981e528}'
+  const url = 'https://api.openweathermap.org/data/2.5/weather?q=${location}&appid={}'
   
   // get location from api
   const searchLocation = (event) => {
