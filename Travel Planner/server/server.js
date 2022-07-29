@@ -3,6 +3,7 @@ const app = express()
 
 cities = 
 [
+    
     {
         id : 1,
         name : "Toronto", 
