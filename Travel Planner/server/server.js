@@ -3,7 +3,6 @@ const app = express()
 
 cities = 
 [
-    
     {
         id : 1,
         name : "Toronto", 
@@ -32,7 +31,6 @@ cities =
 ];
 
 app.get("/api", (req, res) => {
-    //res.json({ "cities": ["London", "userTwo", "userThree", "userFour"]})
     res.json({cities})
 })
 

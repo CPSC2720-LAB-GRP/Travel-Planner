@@ -5,9 +5,9 @@ import axios from 'axios'
 function App() {
 
   //weather api
-  const url = 'https://api.openweathermap.org/data/2.5/weather?q=${location}&appid={}'
+  const url = 'https://api.openweathermap.org/data/2.5/weather?q=${location}&appid={45567e79f27c046f256a6abdc981e528}'
   
-  // get location from api
+  // get location from weather api
   const searchLocation = (event) => {
     axios.get(url).then((response) => {
       setData(response.data)
@@ -16,15 +16,13 @@ function App() {
     )
   }
 
-  //set backend data
-  const [backendData, setBackendData] = useState( [{}])
-
   //Location Data and setdata
   const [data, setData] = useState({})
 
   //location and set location
-  const [location, setLocation] = useState('')
+  const [location, setLocation] = useState('')  
 
+  //call backend API
   useEffect(() => {
     fetch("/api").then(
       response => response.json()
@@ -35,17 +33,32 @@ function App() {
     )
   }, [])
 
-  const options = [
-    { value: 'Toronto', label: 'Toronto' },
-    { value: 'London', label: 'London' },
-    { value: 'New York', label: 'New York' }
-  ]
+  //set backend data
+  const [backendData, setBackendData] = useState( [{}])
 
-console.log(options)
+  //get initial state for backend
+  const getInitialState = () => {
+    const value = "";
+    return value;
+  };
+
+  //use state for dropdown
+  const [value, setValue] = useState(getInitialState);
+
+  //handle change for dropdown and setting value
+  const handleChange = (e) => {
+    console.log(value)
+    setValue(e.target.value);
+  };
+
+  console.log(backendData)
+
   return (
     <div>
             <div>
-          <select>
+            <h1>Travel Planner</h1>
+
+          <select value={value} onChange={handleChange}>
           {(typeof backendData.cities === 'undefined') ?(
             <p>Loading...</p>): 
             (
@@ -56,17 +69,12 @@ console.log(options)
             
           }
           </select>
+          <p>You selected {value}</p>
 
-          {/*
-      <select>
-           <Select options={options} />
-      </select>
-            */}
           </div>  
     </div>
   
   )
-  console.log(backendData)
 
 }
 export default App
