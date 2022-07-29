@@ -44,29 +44,29 @@ function App() {
 console.log(options)
   return (
     <div>
+            <div>
+          <select>
           {(typeof backendData.cities === 'undefined') ?(
-            <p>Loading...</p>
-          ): (
-            backendData.cities.map((cities, i) => (
-              <p key={i}>{cities.name}</p>
+            <p>Loading...</p>): 
+            (
+                backendData.cities.map((cities, i) => (  
+                <option key={i} value={cities.name}>{cities.name}</option>
             ))
-          )}
-        <select>
-              {
-              backendData.cities.map((cities)=>(<option title={cities.id}>{cities.name}</option>))
-              }
-        </select>
-      
-      {/*
+            )
+            
+          }
+          </select>
+
+          {/*
       <select>
-          {backendData.cities.map((cities, i) => <option key={i} value={cities.id}>{cities.name}</option>)}
+           <Select options={options} />
       </select>
             */}
-      <Select options={options} />
-      
+          </div>  
     </div>
   
   )
-}
+  console.log(backendData)
 
+}
 export default App
