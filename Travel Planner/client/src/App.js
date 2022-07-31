@@ -1,5 +1,4 @@
 import React, { useEffect, useState} from 'react'
-import Select from 'react-select'
 import axios from 'axios'
 
 function App() {
@@ -20,7 +19,7 @@ function App() {
   const [data, setData] = useState({})
 
   //location and set location
-  const [location, setLocation] = useState('')  
+  const [location, setLocation] = useState(null)  
 
   //call backend API
   useEffect(() => {
@@ -28,30 +27,26 @@ function App() {
       response => response.json()
     ).then (
           data => {
-            setBackendData(data)
+            setCities(data.cities)
           }
     )
   }, [])
 
   //set backend data
-  const [backendData, setBackendData] = useState( [{}])
-
-  //get initial state for backend
-  const getInitialState = () => {
-    const value = "";
-    return value;
-  };
+  const [cities, setCities] = useState(null);
 
   //use state for dropdown
-  const [value, setValue] = useState(getInitialState);
+  const [value, setValue] = useState(null);
 
-  //handle change for dropdown and setting value
+  //handle change for dropdown and setting value and city descriptiion
   const handleChange = (e) => {
-    console.log(value)
+
     setValue(e.target.value);
+    
   };
 
-  console.log(backendData)
+  let foundCity = cities&&cities.find(e => e.id === parseInt(value));
+  console.log(foundCity)
 
   return (
     <div>
@@ -59,22 +54,21 @@ function App() {
             <h1>Travel Planner</h1>
 
           <select value={value} onChange={handleChange}>
-          {(typeof backendData.cities === 'undefined') ?(
+          <option value="" selected disabled hidden>Choose here</option>
+            {(!cities) ?(
             <p>Loading...</p>): 
             (
-                backendData.cities.map((cities, i) => (  
-                <option key={i} value={cities.name}>{cities.name}</option>
+                cities.map((cities, i) => (  
+                <option key={i} value={cities.id}>{cities.name}</option>
             ))
             )
-            
           }
           </select>
-          <p>You selected {value}</p>
-
+          <p>{foundCity && foundCity.description}</p>
+          <p>Weather: {foundCity && foundCity.name}</p>
           </div>  
     </div>
   
   )
-
 }
 export default App
