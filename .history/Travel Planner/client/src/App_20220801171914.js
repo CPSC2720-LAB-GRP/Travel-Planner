@@ -3,11 +3,23 @@ import axios from 'axios'
 
 function App() {
 
+  //weather api
+  let url = 'https://api.openweathermap.org/data/2.5/weather?q=toronto&appid=26fe08b75a89956ef8e86cf1e40c19a1&units=metric'
+
   //Location Data and setdata
   const [data, setData] = useState({})
 
   //location and set location
   const [location, setLocation] = useState(null)  
+  
+  // get location from weather api
+  const searchLocation = (event) => {
+    axios.get(url).then((response) => {
+      setData(response.data)
+      console.log(response.data)
+    })
+    setLocation('')
+  }
 
   //call backend API
   useEffect(() => {

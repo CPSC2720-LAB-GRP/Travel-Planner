@@ -3,11 +3,23 @@ import axios from 'axios'
 
 function App() {
 
+  //weather api
+  const url = 'https://api.openweathermap.org/data/2.5/weather?q=toronto&appid=26fe08b75a89956ef8e86cf1e40c19a1&units=metric'
+
   //Location Data and setdata
   const [data, setData] = useState({})
 
   //location and set location
   const [location, setLocation] = useState(null)  
+  
+  // get location from weather api
+  const searchLocation = (event) => {
+    axios.get(url).then((response) => {
+      setData(response.data)
+      console.log(response.data)
+    })
+    setLocation('')
+  }
 
   //call backend API
   useEffect(() => {
@@ -27,42 +39,36 @@ function App() {
   const [value, setValue] = useState(null);
 
   //set city
-  let foundCity = cities&&cities.find(e => e.id === parseInt(value));
+  //let foundCity = cities&&cities.find(e => e.id === parseInt(value));
+  let foundCity = '';
+
+  if (foundCity != null) {
+    console.log(foundCity.name);
+  }
 
   //handle change for dropdown and setting value and city descriptiion
   const handleChange = (e) => {
-    const value = (e.target.value);
-    setValue(value);
+    setValue(e.target.value);
     
-    const foundCity = cities&&cities.find(e => e.id === parseInt(value));
-
-    if (foundCity) {
-      console.log(foundCity.name);
-      const test = 'https://api.openweathermap.org/data/2.5/weather?q=' + (foundCity.name) +'&appid=26fe08b75a89956ef8e86cf1e40c19a1&units=metric'; 
-  
-      axios.get(test).then((response) => {
-        setData(response.data)
-      })
-    }
+    foundCity = cities&&cities.find(e => e.id === parseInt(value));
+    searchLocation();
   };
 
   return (
     <div className="app">
-            <div className="dropdown"> 
+            <div className="dropdown">
               <h1 >Travel Planner</h1>
-              <div class="custom-select">
-                  <select value={value} onChange={handleChange}>
-              <option value="" selected disabled hidden>Choose here</option>
-                {(!cities) ?(
-                <p>Loading...</p>): 
-                (
-                    cities.map((cities, i) => (  
-                    <option key={i} value={cities.id}>{cities.name}</option>
-                ))
-                )
-              }
-              </select>
-              </div>
+          <select value={value} onChange={handleChange}>
+          <option value="" selected disabled hidden>Choose here</option>
+            {(!cities) ?(
+            <p>Loading...</p>): 
+            (
+                cities.map((cities, i) => (  
+                <option key={i} value={cities.id}>{cities.name}</option>
+            ))
+            )
+          }
+          </select>
           </div>  
           <div className="weatherApp">
             <div className="container">

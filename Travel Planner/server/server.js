@@ -10,8 +10,8 @@ cities =
     },
     {
         id : 2,
-        name : "New York", 
-        description : "New York City comprises of 5 boroughs sitting where the Hudson River meets the Atlantic Ocean.", 
+        name : "Dallas", 
+        description : "Dallas is the third-largest city in Texas, after Houston and San Antonio. It is and the ninth-largest city in the United States, located in the north-central part of the state, near the junction of the Trinity River's three forks. ", 
     },
     {
         id : 3,
