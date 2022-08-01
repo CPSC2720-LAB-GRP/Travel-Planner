@@ -1,6 +1,5 @@
 import React, { useEffect, useState} from 'react'
 import axios from 'axios'
-import WEATHER_API_KEY from './apikey'
 
 function App() {
 
@@ -39,7 +38,7 @@ function App() {
 
     if (foundCity) {
       console.log(foundCity.name);
-      const test = 'https://api.openweathermap.org/data/2.5/weather?q=' + (foundCity.name) +'&appid=' + WEATHER_API_KEY + '&units=metric'; 
+      const test = 'https://api.openweathermap.org/data/2.5/weather?q=' + (foundCity.name) +'&appid=' + (api_key) + '&units=metric'; 
   
       axios.get(test).then((response) => {
         setData(response.data)

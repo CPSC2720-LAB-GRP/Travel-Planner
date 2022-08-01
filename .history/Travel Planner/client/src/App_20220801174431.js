@@ -1,6 +1,8 @@
 import React, { useEffect, useState} from 'react'
 import axios from 'axios'
-import WEATHER_API_KEY from './apikey'
+require('dotenv').config();
+
+console.log(process.env);
 
 function App() {
 
@@ -9,6 +11,9 @@ function App() {
 
   //location and set location
   const [location, setLocation] = useState(null)  
+
+  //api key
+  const api_key = process.env.API_KEY;
 
   //call backend API
   useEffect(() => {
@@ -39,7 +44,7 @@ function App() {
 
     if (foundCity) {
       console.log(foundCity.name);
-      const test = 'https://api.openweathermap.org/data/2.5/weather?q=' + (foundCity.name) +'&appid=' + WEATHER_API_KEY + '&units=metric'; 
+      const test = 'https://api.openweathermap.org/data/2.5/weather?q=' + (foundCity.name) +'&appid=' + 'ss' + '&units=metric'; 
   
       axios.get(test).then((response) => {
         setData(response.data)
