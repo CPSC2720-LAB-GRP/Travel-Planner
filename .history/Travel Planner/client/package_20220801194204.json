@@ -16,7 +16,6 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "dev": "(cd Travel Planner/client/server && npm run dev) & npm run start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

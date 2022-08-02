@@ -39,9 +39,8 @@ function App() {
 
     if (foundCity) {
       console.log(foundCity.name);
-      //const test = 'https://api.openweathermap.org/data/2.5/weather?q=' + (foundCity.name) +'&appid=' + WEATHER_API_KEY + '&units=metric'; 
-      const test = 'https://api.openweathermap.org/data/2.5/weather?q=' + (foundCity.name) +'&appid=9721a51401a6b717043edde031f0d9b3' + '&units=metric'; 
-
+      const test = 'https://api.openweathermap.org/data/2.5/weather?q=' + (foundCity.name) +'&appid=' + WEATHER_API_KEY + '&units=metric'; 
+  
       axios.get(test).then((response) => {
         setData(response.data)
       })

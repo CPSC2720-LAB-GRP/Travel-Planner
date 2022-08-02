@@ -41,6 +41,7 @@ return {
   status: 200,
   json: async () => ({cities})
 };
+
 }
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

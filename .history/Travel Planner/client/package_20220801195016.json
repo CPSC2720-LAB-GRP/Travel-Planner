@@ -16,7 +16,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "dev": "(cd Travel Planner/client/server && npm run dev) & npm run start",
+    "dev": "(cd server && npm run dev) & npm run start",
+    "server": "nodemon server.js --ignore client",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

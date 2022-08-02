@@ -4,10 +4,8 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-//mocking data for backend
-window.fetch = async function() {
-
-const cities = 
+window.fetch = function() {
+  cities = 
 [
     {
         id : 1,
@@ -35,13 +33,11 @@ const cities =
         description : "Beijing is the capital of the People's Republic of China. It is the world's most populous national capital city, with over 21 million residents within an administrative area of 16,410.5 km.", 
     }
 ]
-
-return {
-  ok: true,
-  status: 200,
-  json: async () => ({cities})
-};
 }
+
+
+
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

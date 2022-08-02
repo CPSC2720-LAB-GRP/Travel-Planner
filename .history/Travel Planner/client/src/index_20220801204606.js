@@ -4,10 +4,9 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-//mocking data for backend
-window.fetch = async function() {
+window.fetch = function() {
 
-const cities = 
+const  cities = 
 [
     {
         id : 1,
@@ -39,9 +38,15 @@ const cities =
 return {
   ok: true,
   status: 200,
-  json: async () => ({cities})
+  json: async () => (cities)
 };
+
 }
+
+
+
+
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
