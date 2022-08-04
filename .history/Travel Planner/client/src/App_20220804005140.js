@@ -32,30 +32,25 @@ function App() {
 
   //handle change for dropdown and setting value and city descriptiion, as well as sending request to weather api
   const handleChange = (e) => {
-    // on change set value of selection
     const value = e.target.value;
     setValue(value);
 
-    //create found city object from user selection
     const foundCity = cities && cities.find((e) => e.id === parseInt(value));
 
-    // if city is found, then send api request using the name and api key
     if (foundCity) {
       console.log(foundCity.name);
-      const location =
+      const test =
         "https://api.openweathermap.org/data/2.5/weather?q=" +
         foundCity.name +
         api_key +
         "&units=metric";
 
-      // send api request using axios
-      axios.get(location).then((response) => {
+      axios.get(test).then((response) => {
         setData(response.data);
       });
     }
   };
 
-  // main app
   return (
     <div className="app">
       <div className="dropdown">

@@ -2,7 +2,6 @@
 const express = require("express");
 const app = express();
 
-//simple data for cities
 cities = [
   {
     id: 1,
@@ -40,7 +39,6 @@ app.get("/api", (req, res) => {
   res.json({ cities });
 });
 
-//confirm that the server is working
 app.listen(5000, () => {
   console.log("Server started on port 5000");
 });

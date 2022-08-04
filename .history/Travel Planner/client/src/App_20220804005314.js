@@ -55,7 +55,6 @@ function App() {
     }
   };
 
-  // main app
   return (
     <div className="app">
       <div className="dropdown">

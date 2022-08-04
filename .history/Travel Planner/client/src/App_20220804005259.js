@@ -48,14 +48,12 @@ function App() {
         api_key +
         "&units=metric";
 
-      // send api request using axios
       axios.get(location).then((response) => {
         setData(response.data);
       });
     }
   };
 
-  // main app
   return (
     <div className="app">
       <div className="dropdown">
